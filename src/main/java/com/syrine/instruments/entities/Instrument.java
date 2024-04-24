@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Instrument {
@@ -16,6 +17,17 @@ public class Instrument {
 	private Double prixInstrument;
 	private Date dateCreation;
 	
+	@ManyToOne
+	private Type type;
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "Instrument [idInstrument=" + idInstrument + ", nomInstrument=" + nomInstrument + ", prixInstrument="

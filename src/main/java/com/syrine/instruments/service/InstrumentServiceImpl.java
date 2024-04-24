@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.syrine.instruments.entities.Instrument;
+import com.syrine.instruments.entities.Type;
 import com.syrine.instruments.repos.InstrumentRepository;
 
 @Service
@@ -48,4 +49,35 @@ public class InstrumentServiceImpl implements InstrumentService {
 	public Page<Instrument> getAllInstrumentsParPage(int page, int size) {
 		return instrumentRepository.findAll(PageRequest.of(page, size));
 	}
+	
+	@Override
+	public List<Instrument> findByNomInstrument(String nom) {
+	return instrumentRepository.findByNomInstrument(nom);
+	}
+	@Override
+	public List<Instrument> findByNomInstrumentContains(String nom) {
+	return instrumentRepository.findByNomInstrumentContains(nom);
+	}
+	@Override
+	public List<Instrument> findByNomPrix(String nom, Double prix) {
+	return instrumentRepository.findByNomPrix(nom, prix);
+	}
+	@Override
+	public List<Instrument> findByType(Type type) {
+	return instrumentRepository.findByType(type);
+	}
+	@Override
+	public List<Instrument> findByTypeIdTyp(Long id) {
+	return instrumentRepository.findByTypeIdTyp(id);
+	}
+	@Override
+	public List<Instrument> findByOrderByNomInstrumentAsc() {
+	return instrumentRepository.findByOrderByNomInstrumentAsc();
+	}
+	@Override
+	public List<Instrument> trierInstrumentsNomsPrix() {
+	return instrumentRepository.trierInstrumentsNomsPrix();
+	}
+
+	
 }

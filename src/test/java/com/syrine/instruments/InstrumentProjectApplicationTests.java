@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
 import com.syrine.instruments.entities.Instrument;
+import com.syrine.instruments.entities.Type;
 import com.syrine.instruments.repos.InstrumentRepository;
 import com.syrine.instruments.service.InstrumentService;
 
@@ -53,20 +54,91 @@ class InstrumentProjectApplicationTests {
 	System.out.println(i);
 	}
 	}
-	@Test
-	public void testFindByNomProduitContains()
-	{
-	Page<Instrument> instr = instrumentService.getAllInstrumentsParPage(0,2);
-	System.out.println(instr.getSize());
-	System.out.println(instr.getTotalElements());
-	System.out.println(instr.getTotalPages());
-	instr.getContent().forEach(i -> {System.out.println(i.toString());
-	 });
+
+	/*
+	 * @Test public void testFindByNomProduitContains() { Page<Instrument> instr =
+	 * instrumentService.getAllInstrumentsParPage(0,2);
+	 * System.out.println(instr.getSize());
+	 * System.out.println(instr.getTotalElements());
+	 * System.out.println(instr.getTotalPages()); instr.getContent().forEach(i ->
+	 * {System.out.println(i.toString()); });
+	 */
 	/*ou bien
 	for (Instrument i : instr)
 	{
 	System.out.println(i);
-	} */
+	} 
+	}*/
+	@Test
+	public void testFindByNomInstrument()
+	{
+	List<Instrument> instr = instrumentRepository.findByNomInstrument("violon");
+	for (Instrument i : instr)
+	{
+	System.out.println(i);
+	}
+	}
+	
+	@Test
+	public void testFindByNomInstrumentContains ()
+	{
+	List<Instrument> instr=instrumentRepository.findByNomInstrumentContains("luth");
+	for (Instrument i : instr)
+	{
+	System.out.println(i);
+	} }
+
+	@Test
+	public void testfindByNomPrix()
+	{
+	List<Instrument> instr = instrumentRepository.findByNomPrix("violon", 2200.5);
+	for (Instrument i : instr)
+	{
+	System.out.println(i);
+	}
+	}
+	
+	@Test
+	public void testfindByType()
+	{
+	Type typ = new Type();
+	typ.setIdTyp(1L);
+	List<Instrument> instr = instrumentRepository.findByType(typ);
+	for (Instrument i : instr)
+	{
+	System.out.println(i);
+	}
+	}
+	
+	@Test
+	public void findByTypeIdTyp()
+	{
+	List<Instrument> instr = instrumentRepository.findByTypeIdTyp(1L);
+	for (Instrument i : instr)
+	{
+	System.out.println(i);
+	}
+	 }
+	
+	@Test
+	public void testfindByOrderByNomInstrumentAsc()
+	{
+	List<Instrument> instr =
+			instrumentRepository.findByOrderByNomInstrumentAsc();
+	for (Instrument i : instr)
+	{
+	System.out.println(i);
+	}
+	}
+	
+	@Test
+	public void testTrierInstrumentsNomsPrix()
+	{
+	List<Instrument> instr = instrumentRepository.trierInstrumentsNomsPrix();
+	for (Instrument i : instr)
+	{
+	System.out.println(i);
+	}
 	}
 
 }
