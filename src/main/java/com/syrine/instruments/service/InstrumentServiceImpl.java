@@ -9,11 +9,15 @@ import org.springframework.stereotype.Service;
 import com.syrine.instruments.entities.Instrument;
 import com.syrine.instruments.entities.Type;
 import com.syrine.instruments.repos.InstrumentRepository;
+import com.syrine.instruments.repos.TypeRepository;
 
 @Service
 public class InstrumentServiceImpl implements InstrumentService {
 	@Autowired
 	InstrumentRepository instrumentRepository;
+	
+	@Autowired
+	TypeRepository typeRepository;
 
 	@Override
 	public Instrument saveInstrument(Instrument i) {
@@ -77,6 +81,11 @@ public class InstrumentServiceImpl implements InstrumentService {
 	@Override
 	public List<Instrument> trierInstrumentsNomsPrix() {
 	return instrumentRepository.trierInstrumentsNomsPrix();
+	}
+
+	@Override
+	public List<Type> getAllTypes() {
+		return typeRepository.findAll();
 	}
 
 	

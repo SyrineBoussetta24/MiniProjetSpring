@@ -22,4 +22,6 @@ public interface InstrumentService {
 	List<Instrument> findByOrderByNomInstrumentAsc();
 	List<Instrument> trierInstrumentsNomsPrix();
 	Page<Instrument> getAllInstrumentsParPage(int page, int size);
+	
+	List<Type> getAllTypes();
 }

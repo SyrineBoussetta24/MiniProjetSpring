@@ -24,15 +24,20 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @SpringBootApplication
 public class InstrumentProjectApplication  implements CommandLineRunner{
+	@Autowired 
+	InstrumentService instrumentService;
 
-	@Autowired
-	private RepositoryRestConfiguration repositoryRestConfiguration;
 	public static void main(String[] args) {
-	SpringApplication.run(InstrumentProjectApplication.class, args);
+		SpringApplication.run(InstrumentProjectApplication.class, args);
 	}
+	
 	@Override
 	public void run(String... args) throws Exception {
-	repositoryRestConfiguration.exposeIdsFor(Instrument.class);
+	/*produitService.saveProduit(new Produit("PC Dell", 2600.0, new Date()));
+	produitService.saveProduit(new Produit("PC Asus", 2800.0, new Date()));
+	produitService.saveProduit(new Produit("Imp Epson", 900.0, new Date()));
+	*/
+		
 	}
 
 
