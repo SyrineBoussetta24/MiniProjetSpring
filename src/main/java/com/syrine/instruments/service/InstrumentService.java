@@ -9,11 +9,13 @@ import com.syrine.instruments.entities.Type;
 
 public interface InstrumentService {
 	Instrument saveInstrument(Instrument i);
-	Instrument updateInstrument(Instrument i);
-	void deleteInstrument(Instrument i);
-	void deleteInstrumentById(Long id);
 	Instrument getInstrument(Long id);
 	List<Instrument> getAllInstruments();
+	
+	Instrument updateInstrument(Instrument i);
+	
+	void deleteInstrument(Instrument i);
+	void deleteInstrumentById(Long id);
 	List<Instrument> findByNomInstrument(String nom);
 	List<Instrument> findByNomInstrumentContains(String nom);
 	List<Instrument> findByNomPrix (String nom, Double prix);
@@ -24,4 +26,6 @@ public interface InstrumentService {
 	Page<Instrument> getAllInstrumentsParPage(int page, int size);
 	
 	List<Type> getAllTypes();
+	
+
 }
